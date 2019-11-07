@@ -3,32 +3,33 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
-void swap (int x, int y){ // 사본 넘겨줌 
-	int temp;
-	temp = x;
-	x = y;
-	y = temp;
-}
-
-void swap2 (int *x, int *y){ // 포인터 넘겨줌 -> 포인터가 가르키는 걸 바꿔줌 
-	int temp;
-	temp = *x;
-	*x = *y;
-	*y = temp;
-}
 
 int main(int argc, char *argv[]) {
 	
-	int a = 3;
-	int b = 5;
-	swap(a,b); // pointer (x)
-	printf("a : %d, b : %d\n", a, b);
+	int i;
+	int grade[5];
+	int average = 0;
+	int *ptr;
 	
-	int c = 3;	 
-	int d = 5;
 	
-	swap2(&c, &d); // pointer (o)
-	printf("c : %d, d : %d\n", c, d);
+	for (i=0;i<5;i++) 
+	{
+		printf("grade[%i] = ", i);
+		scanf("%d", &grade[i]);
+	}
 	
+	for (i=0;i<5;i++)
+		printf("grade[%d] = %d\n", i, grade[i]);
+	
+	ptr = grade;	
+	for (i=0;i<5;i++)
+	{
+		printf("grade[%d] = %d\n", i, *(ptr+i));
+		average += *(ptr+i);
+		
+	}
+	
+	printf ("\n -- average : %d\n", average/5);
+		
 	return 0;
 }
